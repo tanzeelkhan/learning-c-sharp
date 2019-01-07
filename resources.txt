@@ -1,3 +1,7 @@
 https://www.linkedin.com/learning/c-sharp-essential-training-1-syntax-and-object-oriented-programming/
 https://www.youtube.com/watch?v=SXmVym6L8dw&index=2&t=0s&list=PLAC325451207E3105
 https://www.c-sharpcorner.com/article/assembly-in-net/
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/destructors
+https://www.c-sharpcorner.com/UploadFile/0c1bb2/constructors-and-its-types-in-C-Sharp/
+https://www.c-sharpcorner.com/UploadFile/mkagrahari/introduction-to-object-oriented-programming-concepts-in-C-Sharp/
+https://www.loginworks.com/blogs/object-oriented-programming-concepts-c/
