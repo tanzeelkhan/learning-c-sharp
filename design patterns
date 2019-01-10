@@ -1,0 +1,35 @@
+using System;
+
+    class Singleton
+    {
+        static int count = 0;
+        private static Singleton instance = null;
+        public static Singleton GetInstance()
+        {
+            if(instance==null)
+            instance = new Singleton();
+            
+            return instance;
+        }
+        private Singleton()
+        {
+            Console.WriteLine("Counter Value is: " + count++);
+        }
+        public void print(string message)
+        {
+            Console.WriteLine(message);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Singleton fromEmployee = Singleton.GetInstance();
+            fromEmployee.print("From Employee");
+            Singleton fromStudent = Singleton.GetInstance();
+            fromStudent.print("From Student");
+            Console.ReadKey();
+
+        }
+    }
