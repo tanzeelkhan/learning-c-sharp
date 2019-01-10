@@ -8,3 +8,8 @@ https://www.loginworks.com/blogs/object-oriented-programming-concepts-c/
 https://www.c-sharpcorner.com/UploadFile/sekarbalag/interface-best-example-in-csharp/
 https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/override
 https://www.codeproject.com/Articles/11155/Abstract-Class-versus-Interface
+https://www.dofactory.com/net/design-patterns
+https://www.youtube.com/watch?v=YGGg9ecy0K4&index=2&list=PL6n9fhu94yhUbctIoxoVTrklN3LMwTCmd
+www.blackwasp.co.uk/CSharpVariableScopes.aspx
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/namespaces/
+www.albahari.com/valuevsreftypes.aspx
