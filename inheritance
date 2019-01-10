@@ -1,0 +1,134 @@
+//filename: Program.cs
+
+
+using System;
+
+abstract class Shape
+{
+    abstract public int Area();
+}
+
+class Square : Shape
+{
+    int side = 0;
+    public Square(int n)
+    {
+        side = n;
+    }
+    public override int Area()
+    {
+        return side * side;
+    }
+}
+
+
+//Interfaces - Implementing multiple inheritance
+
+interface ICustomer
+{
+    void print1();
+}
+
+interface I2 : ICustomer
+{
+    void print0();
+}
+interface I3
+{
+    void print0();
+}
+class Customer: I2, I3
+{
+    public void print1()
+    {
+        Console.WriteLine("Implementing Interface function");
+    }
+
+    void I2.print0()
+    {
+        Console.WriteLine("defining the abstract function in interface I2");
+    }
+
+    void I3.print0()
+    {
+        Console.WriteLine("defining the abstract function in interface I3");
+    }
+}
+
+
+public class Class1
+{
+    public Class1()
+    {
+    }
+
+    public static void Main()
+    {
+        Customer c1 = new Customer();
+        c1.print1();
+        
+        ((I2)c1).print0(); //Explicit Interface Implementation
+        ((I3)c1).print0(); //Explicit Interface Implementation
+
+        ICustomer c2 = new Customer(); // creating refence variable using interface and pointing it to the Customer
+        Console.WriteLine("Calling the function using interface refence variable: ");
+        c2.print1();
+
+        Square s1 = new Square(10);
+        Console.WriteLine("Area of the Square is "+ s1.Area());
+        Console.ReadKey();
+
+    }
+}
+
+////////////////////// AssemblyOne - class1.cs///////////////////////////////
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AssemblyOne
+{
+    public class AssemblyOneClass
+    {
+        internal int a = 10;
+       // protected internal int b = 20;
+    }
+
+    public class AssemblyOne2
+    {
+        public void Sample()
+        {
+            AssemblyOneClass ob = new AssemblyOneClass();
+            Console.WriteLine(ob.a);
+        }
+    }
+}
+
+
+/////////////////////////////// AssemblyTwo - class1.cs ////////////////////////////////
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using AssemblyOne;
+
+
+namespace AssemblyTwo
+{
+    public class AssemblyTwo
+    {
+        public void s2()
+        {
+            AssemblyOneClass ob = new AssemblyOneClass();
+            ob.a=199;
+            Console.WriteLine(ob.a);
+        }
+    }
+}
+
+
+
