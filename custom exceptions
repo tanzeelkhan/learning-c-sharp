@@ -1,0 +1,48 @@
+using System;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            try
+            {
+                throw new UserAlreadyException("error occured");
+                Console.ReadLine();
+            }
+            catch( UserAlreadyException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.ReadLine();
+            }
+        }
+    }
+
+    [Serializable]
+    public class UserAlreadyException: Exception
+    {
+        public UserAlreadyException(string message)
+            :base(message)
+        { }
+
+        public UserAlreadyException()
+            : base()
+        { }
+
+        public UserAlreadyException(string message, Exception InnerException)
+            : base(message)
+        { }
+
+        public UserAlreadyException(SerializationInfo info, StreamingContext context)
+            :base(info, context)
+        { }
+    }
+}
