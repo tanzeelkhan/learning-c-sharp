@@ -1,0 +1,109 @@
+//Filename: Program.cs
+
+using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Basics
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string a = "\"hel\nlo\"";
+            string b = @"\hel\\lo\\";
+            int? i = null;
+            int x = i?? 0; //if i is null, assign 0 to x, else assign value of i to x
+            //int x = (int)i;
+            //int x = i.Value;
+            Console.WriteLine(x);
+            int m = 10;
+            float n = m; //implicit conversion
+            Console.WriteLine(n);
+
+            float p = 102.55f;
+
+            int q = Convert.ToInt32(p); //explicit conversion - another way - shows error when out of bound
+            int h = (int)p; //explicit conversion
+            Console.WriteLine(q);
+
+
+            string rollno = "235";
+            float roll = float.Parse(rollno);  //Parse
+            Console.WriteLine(roll+10);
+
+            string id = "235TK";
+            int eid;
+            int.TryParse(id, out eid);  //Try Parse
+            Console.WriteLine(eid + 10);
+
+
+
+            Console.WriteLine(b);
+            Console.WriteLine(i);
+
+
+
+            ///////////Exception Handling
+            int z = 10;
+            int xc = 0;
+
+            try
+            {
+               int div = 100 / xc;
+            }
+            catch(DivideByZeroException ex)
+            {
+                Console.WriteLine("Divide by Zero");
+                Console.WriteLine(ex.Message);
+            }
+
+            finally
+            {
+               // Console.ReadLine();
+            }
+
+            try
+            {
+                Console.WriteLine("Enter 1st number");
+                int fn = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter 2nd number");
+                int ln = Convert.ToInt32(Console.ReadLine());
+
+                int result = fn / ln;
+
+                Console.WriteLine("Result: " + result);
+            }
+
+            catch( Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.GetType().Name);
+                //Console.WriteLine(ex.StackTrace);
+
+                string FilePath = @"C:\Users\tanzeel\Desktop\log.txt";
+                if (File.Exists(FilePath))
+                {
+                    StreamWriter st = new StreamWriter(FilePath);
+                    st.Write(ex.GetType().Name);
+                    st.Write(ex.Message);
+                    st.Close();
+                    Console.WriteLine("There's an error. log file has been updated");
+                }
+                else
+                {
+                    throw new FileNotFoundException(FilePath + "Not Found", ex);
+                }
+            }
+
+            finally
+            {
+                Console.ReadLine();
+            }
+
+        }
+    }
+}
