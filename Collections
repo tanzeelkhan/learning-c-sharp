@@ -1,0 +1,92 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ArrayList
+            {
+                ArrayList al = new ArrayList();
+                string str = "Tanzeel Khan";
+                string st1 = "mindfire";
+                int num = 20181111;
+                char ch = 'h';
+                float f = 201.12f;
+                var x = "Hello 123";
+
+                al.Add(str);
+                al.Add(st1);
+                al.Add(num);
+                al.Add(ch);
+                al.Add(f);
+                al.Add(x);
+                al.Add("10");
+
+                foreach (object o in al)
+                {
+                    Console.WriteLine(o);
+                }
+                al.RemoveAt(3);
+                //al.Remove(num);
+                al.Insert(3, 10.2);
+                Console.WriteLine("\nItem removed at index 3.\nNew Array: \n");
+                foreach (object o in al)
+                {
+                    Console.WriteLine(o);
+                }
+            }
+
+            //HashTable
+            Hashtable ht = new Hashtable();
+            ht.Add(1, "Tanzeel");
+            ht.Add(2, "Ubaidullah");
+            ht.Add(3, "AB");
+            ht.Add(4, "TK");
+
+            foreach (DictionaryEntry o in ht)
+            {
+                Console.WriteLine(o.Key+ " " + o.Value);
+            }
+
+            //SortedList
+            SortedList sl = new SortedList();
+            sl.Add("x", "C" );
+            sl.Add("z", "C++");
+            sl.Add("y", "Java");
+            sl.Add("c", "C#");
+            sl.Add("\n\na", "Python");
+            sl.Add("b", "Matlab");
+            
+            foreach(DictionaryEntry d in sl)
+            {
+                Console.WriteLine(d.Key + " " + d.Value);
+            }
+            Console.WriteLine(sl.GetKey(2));
+            Console.WriteLine(sl.GetByIndex(2));
+           // Console.WriteLine(sl.Remove(z));
+            Console.ReadLine();
+
+            //Stacks
+            Stack sk = new Stack();
+
+            sk.Push("a");
+            sk.Push("b");
+            sk.Push("c");
+            sk.Push("d");
+            sk.Push("e");
+
+            Console.WriteLine("Printing stack elements");
+            foreach (object o in sk)
+            {
+                Console.WriteLine(o);
+            }
+        }
+    }
+}
