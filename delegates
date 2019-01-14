@@ -1,0 +1,65 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication2
+{
+    public delegate void NewDel();
+    public delegate void HelloDelegate();
+    public delegate int HellDelegate();
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // delegate is a function pointer
+            HelloDelegate del3, del4, del5;
+            HellDelegate del1, del2, del6;
+            del1 = new HellDelegate(Hello);
+            del2 = new HellDelegate(HelloTwo);
+            del3 = new HelloDelegate(HelloThree);
+            del4 = new HelloDelegate(HelloFour);
+
+            NewDel nd = delegate //Anonymous function
+            {
+                Console.WriteLine("Anonymous fiunction");
+            };
+
+            nd();
+            //del4 = del1 + del2 + del3-del2;
+           // del2 = del1;
+            //del2 += del3;
+            del6 = del1 + del2;
+            del5 = del3 + del4;
+            del5();
+           int retval= del6();
+           Console.WriteLine(retval);
+            Console.ReadLine();
+            
+        }
+
+        public static int Hello()
+        {
+            Console.WriteLine("Sample method one invoked");
+            return 1;
+        }
+
+        public static int HelloTwo()
+        {
+            Console.WriteLine("Sample method two invoked");
+            return 2;
+        }
+
+        public static void HelloThree()
+        {
+            Console.WriteLine("Sample method three invoked");
+        }
+
+        public static void HelloFour()
+        {
+            Console.WriteLine("Sample method four invoked");
+        }
+    }
+}
