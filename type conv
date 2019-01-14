@@ -1,0 +1,50 @@
+//Filename: Program.cs
+
+using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Basics
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string a = "\"hel\nlo\"";
+            string b = @"\hel\\lo\\";
+            int? i = null;
+            int x = i?? 0; //if i is null, assign 0 to x, else assign value of i to x
+            //int x = (int)i;
+            //int x = i.Value;
+            Console.WriteLine(x);
+            int m = 10;
+            float n = m; //implicit conversion
+            Console.WriteLine(n);
+
+            float p = 102.55f;
+
+            int q = Convert.ToInt32(p); //explicit conversion - another way - shows error when out of bound
+            int h = (int)p; //explicit conversion
+            Console.WriteLine(q);
+
+
+            string rollno = "235";
+            float roll = float.Parse(rollno);  //Parse
+            Console.WriteLine(roll+10);
+
+            string id = "235TK";
+            int eid;
+            int.TryParse(id, out eid);  //Try Parse
+            Console.WriteLine(eid + 10);
+
+
+
+            Console.WriteLine(b);
+            Console.WriteLine(i);
+
+        }
+    }
+}
