@@ -1,0 +1,79 @@
+using System;
+using System.Reflection;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           // Type T = Type.GetType("ConsoleApplication3.Customer");
+            //Console.WriteLine(T.GetProperties());
+            Type T = typeof(Customer);
+            Console.WriteLine(T.FullName);
+            Console.WriteLine(T.Name);
+            Console.WriteLine(T.Attributes);
+
+            Console.WriteLine("\n\nMethods in customer class:");
+            MethodInfo[] meth = T.GetMethods();
+            foreach(MethodInfo met in meth)
+            {
+                Console.WriteLine(met.Name);
+                Console.WriteLine(met.ReturnType.Name + " " + met.Name);
+            }
+
+            Console.WriteLine("\n\nConstructors in customer class:");
+            ConstructorInfo[] cons = T.GetConstructors();
+            foreach(ConstructorInfo con in cons)
+            {
+                Console.WriteLine(con.Name);
+                Console.WriteLine(con.ToString());
+            }
+
+            PropertyInfo[] prop = T.GetProperties();
+            //Console.WriteLine(prop);
+
+            foreach(PropertyInfo property in prop)
+            {
+                Console.WriteLine(property.Name);
+            }
+
+            
+            Console.ReadLine();
+
+        }
+    }
+
+    public class Customer
+    {
+        public int Id;
+        public string Name;
+
+        public Customer(int Id, string Name)
+        {
+            this.Id = Id;
+            this.Name = Name;
+        }
+
+        public Customer()
+        {
+            this.Id= -1;
+            this.Name= "No one";
+        }
+
+        public void Meth()
+        {
+            Console.WriteLine("I'm in a customer method");
+        }
+
+        public int Method2()
+        {
+            Console.WriteLine("I'm in a customer method");
+            return 0;
+        }
+    }
+}
