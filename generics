@@ -1,0 +1,105 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    public class Gen<T>
+    {
+        private T a;
+        private T b;
+
+        public void sum (T x, T y)
+        {
+            a = x;
+            b = y;
+            float m = Convert.ToInt32(a);
+            float n = Convert.ToInt32(b);
+            Console.WriteLine("Value set");
+            Console.WriteLine("Values: "+ m + " " +n + "\n Existing values: " + a +" " +b);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Gen<float> gene = new Gen<float>();
+            gene.sum(12.5f, 1.1f);
+            Console.ReadLine();
+            bool result = Calculator.AreEqual<int>(10, 10);
+            if (result)
+                Console.WriteLine("Numbers are equal");
+            else
+                Console.WriteLine("Numbers are not equal");
+
+
+            Console.WriteLine("\n\nDictionary\n");
+
+            Dictionary<int, String> dictionaryCust = new Dictionary<int, string>();
+            dictionaryCust.Add(1, "Amir");
+            dictionaryCust.Add(2, "Amit");
+            dictionaryCust.Add(3, "Adil");
+            dictionaryCust.Add(4, "Ajit");
+            dictionaryCust.Add(5, "Arif");
+            dictionaryCust.Add(6, "Arib");
+
+            string name = dictionaryCust[1];
+            Console.WriteLine(name);
+
+            foreach(KeyValuePair<int, string> o in dictionaryCust)
+            {
+                Console.WriteLine("Key: " + o.Key + " Value: " + o.Value);
+            }
+            dictionaryCust.Remove(6);
+            //dictionaryCust.Clear(); remove all elements
+            Console.WriteLine(dictionaryCust.Count());
+
+            // GENERIC LISTS
+            Console.WriteLine("\n\n Generic Lists\n");
+            List<int> li = new List<int>(2);
+
+            li.Add(21);
+            li.Add(22);
+            li.Add(23);
+            li.Add(22);
+            li.Add(23);
+            li.Insert(2, 42);
+
+            foreach(int i in li)
+            {
+                if (i > 22) { }
+                  //  yield return i;
+            }
+
+            foreach( int o in li)
+            {
+                Console.WriteLine(o);
+            }
+
+            //Console.WriteLine(li[0]);
+            Console.WriteLine(li.IndexOf(23));
+            Console.WriteLine(li.IndexOf(23,4));
+            Console.WriteLine(li.IndexOf(21,2,3)); //look for 23 from position 4, count till 2 elements
+            li.Contains(10);
+            
+            int[] ab = {1,2,3,4,5,6,7,8,9,10};
+            List<int> lis = ab.ToList();
+           // Dictionary<int, string> dic = lis.ToDictionary();
+        }
+    }
+
+    public class Calculator //classes can also be made generic
+    {
+        public static bool AreEqual<T>(T a, T b)
+        {
+            return a.Equals(b);
+
+        }
+
+    
+    }
+
+   
+}
