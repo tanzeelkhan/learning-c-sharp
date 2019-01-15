@@ -71,7 +71,6 @@ namespace ConsoleApplication3
             Console.WriteLine(sl.GetKey(2));
             Console.WriteLine(sl.GetByIndex(2));
            // Console.WriteLine(sl.Remove(z));
-            Console.ReadLine();
 
             //Stacks
             Stack sk = new Stack();
@@ -87,6 +86,36 @@ namespace ConsoleApplication3
             {
                 Console.WriteLine(o);
             }
+            sk.Peek(); //returns the object at the top
+            sk.Pop();// removes the top object
+
+
+            Console.WriteLine("\n\nQueues");
+            //Queues
+            Queue q = new Queue();
+            q.Enqueue("a");
+            q.Enqueue("b");
+            q.Enqueue("c");
+            q.Enqueue("d");
+            q.Enqueue("e");
+
+            foreach (object o in q)
+            {
+                Console.WriteLine(o);
+            }
+
+            Console.WriteLine(q.Contains("a"));
+            q.Dequeue();
+            
+            Console.WriteLine("\n\nAfter Dequeing");
+            foreach (object o in q)
+            {
+                Console.WriteLine(o);
+            }
+
+            Console.WriteLine(q.Contains("a"));
+            Console.ReadLine();
+
         }
     }
 }
