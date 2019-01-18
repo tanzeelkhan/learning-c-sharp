@@ -13,3 +13,5 @@ https://www.youtube.com/watch?v=YGGg9ecy0K4&index=2&list=PL6n9fhu94yhUbctIoxoVTr
 www.blackwasp.co.uk/CSharpVariableScopes.aspx
 https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/namespaces/
 www.albahari.com/valuevsreftypes.aspx
+http://www.tutorialsteacher.com/csharp/csharp-anonymous-type
+https://www.c-sharpcorner.com/UploadFile/1d42da/threading-pooling-in-C-Sharp/
