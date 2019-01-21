@@ -1,0 +1,53 @@
+using System;
+namespace Vari
+{
+    public class Small
+    {
+
+    }
+    public class Big : Small
+    {
+
+    }
+    public class Bigger : Big
+    {
+
+    }
+
+    public delegate Small covarDel(Big mc);
+
+    class Program
+    {
+
+        static Big Method1(Big bg)
+        {
+            Console.WriteLine("Method1");
+            return new Big();
+        }
+
+        static Small Method2(Big bg)
+        {
+            Console.WriteLine("Method2");
+            return new Big(); //covariance
+        }
+
+        static Small Method3(Small sm) //contravariance
+        {
+            Console.WriteLine("Method3");
+            return new Small();
+        }
+
+        static void Main()
+        {
+            covarDel del = new covarDel(Method1);
+            del += Method2;
+            del += Method3;
+
+            
+            Small sml = del(new Big());
+            //Small sml = del(new Small()); //error - derived class cannot hold a base class
+            Console.ReadLine();
+        }
+
+    }
+}
