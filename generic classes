@@ -1,0 +1,165 @@
+using System;
+using System.Linq.Expressions;
+using System.Runtime.InteropServices;
+namespace GetAndSet
+{
+    class CheckElig
+    {
+        private int age;
+        internal string elig;
+        private int id;
+        string Name;
+        private int passmark = 35;
+        public string City { get; set; }
+        private string email { get; set; }
+    
+        public int checkage
+        {
+            
+            set
+            {
+                age = value;
+
+                if (value < 19)
+                    elig = "Minor";
+                else
+                    elig = "Not Minor";
+            }
+        }
+
+        public int Pass
+        {
+            get
+            {
+                return Pass;
+            }
+        }
+
+        public int SetId
+        {
+            set
+            {
+                if(value <= 0)
+                {   
+                    throw new Exception("Student ID cannot be negative or zero");    
+                }
+                id = value;
+            }
+
+            get
+            {
+                return id;
+            }
+        }
+        public string setName
+        {
+            set
+            {
+             
+                    Name = (string.IsNullOrEmpty(value))? "No Name" : value;
+            }
+
+            get
+            {
+                return Name;
+            }
+        }
+        
+    }
+    class Program
+    {
+        delegate void doSomething();
+        delegate int LargestOfTwo(int x, int y);
+
+        //public static int AddNumber (int num1, int num2)
+        //public static int AddNumber (int num1, params int numbers) - pass variable no. of parameters. It can only be used once and must be the last parameter
+       // public static int AddNumber (int num1, int num2=0) //default parameter -  Default should be at the end of parameter list
+        public static int AddNumber (int num1, [Optional] int num2) //optional parameter -  Optional should be at the end of parameter list
+
+        {
+            return num1 + num2;
+        }
+
+        static void Main(string[] args)
+        {
+            var r = "string1"; //var type variable -  early binding
+            int len = r.Length;
+            Console.WriteLine(len);
+
+
+            dynamic s = "string1"; //dynamic type variable - late binding
+            int len1 = s.Length;
+            Console.WriteLine(len1);
+            dynamic dyval = "Hello World";
+            Console.WriteLine("Value of Dynamic Type variable is:" + dyval);
+            Console.WriteLine("Type of Dynamic Type variable is:" + dyval.GetType());
+          //  int dyresult= 10 + dyval;
+            dyval = 30.5;
+            Console.WriteLine("Value of Dynamic Type variable is:" + dyval);
+
+            Console.WriteLine("Type of Dynamic Type variable is:" + dyval.GetType());
+
+            Console.Read();
+
+            int sum1 = AddNumber(3, 5); //normal way of passing arguments
+            int sum2 = AddNumber(num1: 20, num2: 30);
+            int sum3 = AddNumber(num2: 20, num1: 30); //not following the parameter sequence
+            int sum4 = AddNumber(12, num2: 50); //one fixed and one named - All fixed parameters should be passed before passing named parameters
+            //int sum5 = AddNumber(num1:40, 50); - error
+            //int sum6 = AddNumber(num1: 20); - error
+
+ 
+
+            CheckElig ce = new CheckElig();
+            ce.checkage = 20;
+
+            //Console.WriteLine("Age: " + ce.checkage);
+            Console.WriteLine(ce.elig);
+            ce.SetId = 10;
+            //ce.setName = null;
+            ce.setName = "Tanzeel";
+            Console.WriteLine("Name: " + ce.setName);
+
+            Console.WriteLine("\n\n");
+
+            Console.WriteLine("Pass marks: " + ce.Pass);
+
+        //Lambda Expression 1
+        doSomething IamVoid = () => { Console.WriteLine("Hello there! I take nothing and return nothing"); };
+        IamVoid();
+
+
+        //Lambda Expression 2
+        LargestOfTwo CheckValue = (x, y) => { if (x > y) return x; else return y; };
+        int result = CheckValue(10,20);
+        Console.WriteLine(result + " is the greatest number. Done using Lambda Expression");
+
+
+        //Func Expression
+        Func<int, int, int> CheckVal = (a, b) => { if (a > b) return a; else return b; };
+        int FuncResult = CheckVal(2, 33);
+        Console.WriteLine(FuncResult + " is the greatest number. Done using Func Generic Class");
+
+        //Func<int> NoVAl = i =>  Console.WriteLine(i);
+        //NoVAl(10);
+
+       // Func<int,int> NoVAl = (i,j) =>  return i);
+
+        //NoVAl(10);
+
+
+        //Expression Class
+
+        // A simple delegated operation which performs string join.  
+        Func<string, string, string> StringJoin = (str1, str2) => string.Concat(str1, str2);
+        Expression<Func<string, string, string>> StringJoinExpr = (str1, str2) => string.Concat(str1, str2);
+
+        //var func = StringJoinExpr.Compile();
+        string ExResult = StringJoinExpr.Compile()("Tanzeel ", "Khan");
+        Console.WriteLine("The Concatenated String: " + ExResult + ". Done using Expression Tree");
+
+
+            Console.Read();
+        }
+    }
+}
