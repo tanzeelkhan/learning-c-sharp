@@ -1,0 +1,103 @@
+using System;
+
+namespace Properties
+{
+    public class Student
+    {
+        public int ID;
+        public string Name;
+        public int PassMark = 35;
+    }
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            var AnonymousType = new
+            {
+                name = "Tanzeel", //readonly
+                acode = 190001,
+                elig = true
+            };
+
+            Console.WriteLine(AnonymousType.name);
+            Console.WriteLine(AnonymousType.acode.GetType());
+            Console.WriteLine(AnonymousType.acode);
+            
+            var i = 10;
+            var x = Console.ReadLine();
+            Console.WriteLine(x.GetType());
+            Console.WriteLine(x);
+
+            var ar = new[] {1,2,3,4,5};
+            Console.ReadLine();
+
+            string name = null;
+            int result;
+            bool data = Int32.TryParse(name, out result); //works only with string
+         //   int data1 = Int32.Parse(name); //works only with string
+            Console.WriteLine(result + "\n");
+            Console.WriteLine(data);
+
+            int? data99 = null;
+            int data100 = Convert.ToInt32(data99);  //Type-conversion method will handle the nullable type
+            Console.WriteLine("Data100: " + data99);
+            try
+            {
+                int data2 = Convert.ToInt32(name);  //Type-conversion method
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            //string data3 = data2.ToString();
+            int? data4 = 2;
+            int f = (int)data4; //explicit type casting
+            int data5 = 3;
+            float data6 = data5 + 0.25f; //implicit type casting
+            int data7 = (int)data6; // explicit type casting - lossy conversion
+            int? data10 = null;
+            int data11 = Convert.ToInt32(data10);
+            Console.WriteLine(data11);
+            Console.ReadLine();
+
+            int num = 2;
+            Nullable<int> null1 = null;
+            int? null2 = null;
+
+            try
+            {
+                int res = 10 / num;
+                Console.WriteLine("Result: " + res);
+                Console.WriteLine("I'm in the try block after exception");
+
+                try
+                {
+                    int n = 0;
+                    int r = 10 / n;
+                    Console.WriteLine("Result: " + r);
+                    // Console.WriteLine("I'm in the try block after exception");
+                    Console.ReadLine();
+                }
+                catch (ArrayTypeMismatchException h)
+                {
+                    Console.WriteLine("Nested Catch");
+                    Console.ReadLine();
+                }
+                catch (Exception m)
+                {
+                    Console.WriteLine("Nested Exception Catch");
+                    Console.ReadLine();
+                }
+            }
+            catch (DivideByZeroException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.ReadLine();
+            }
+
+
+
+        }
+    }
+}
